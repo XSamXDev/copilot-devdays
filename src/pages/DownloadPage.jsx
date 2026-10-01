@@ -6,16 +6,13 @@ import { getTemplateById } from "../data/templates";
 import { getTweetData } from "../services/getPostData";
 import { TemplateContext } from "../context/TemplateContext";
 import { toPng } from "html-to-image";
-import { useUser } from "@clerk/react";
 export default function DownloadPage() {
-  let count = Number(localStorage.getItem("count")) || 0;
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const selectedTemplate = getTemplateById(location.state?.templateId);
   const TemplatePreview = selectedTemplate.Component;
   const { value, setValue } = useContext(TemplateContext);
-  const { isSignedIn } = useUser();
   const elementRef = useRef(null);
   const {
     register,
