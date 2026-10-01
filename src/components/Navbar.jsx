@@ -17,26 +17,9 @@ export default function Navbar() {
   const NAV_LINKS = [
     { label: "Home", to: "/" },
     { label: "Templates", to: "/templates" },
-    { label: "Contact", to: "/contact" },
-    { label: "FAQ's", to: "/faq" },
+  
   ];
-  const { isSignedIn, user } = useUser();
-
-  useEffect(() => {
-    if (isSignedIn) {
-      const signUp = async () => {
-        await axios.post("http://localhost:8000/sign-up", {
-          id: user.id,
-          email: user.emailAddresses[0].emailAddress,
-          name: user.firstName,
-          createdAt: user.createdAt,
-        });
-      };
-      signUp();
-    }
-  }, [isSignedIn, user]);
-
-
+  
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg-elevated)]/80 backdrop-blur-md">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -70,21 +53,7 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-4 md:flex">
-          <Show when="signed-out">
-            <SignInButton mode="modal">
-              <button className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700">
-                Sign In
-              </button>
-            </SignInButton>
-            <SignUpButton mode="modal">
-              <button className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700">
-                Sign Up
-              </button>
-            </SignUpButton>
-          </Show>
-          <Show when="signed-in">
-            <UserButton />
-          </Show>
+          
         </div>
 
         <button
