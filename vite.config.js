@@ -8,9 +8,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api/twtapi": {
-        target: "https://api.twtapi.com",
+        target: "https://api.twtapi.com/api/v1/twitter/TweetDetail",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/twtapi/, ""),
+        rewrite: () => "",
       },
     },
   },

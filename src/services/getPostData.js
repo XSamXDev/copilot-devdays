@@ -1,7 +1,6 @@
 import axios from "axios"
 
-const TWT_BASE_URL = "/api/twtapi/api/v1/twitter/TweetDetail";
-const TWT_API_KEY = "5e70e833e5310c9e7849fb0ef7c416edbe52cdcb8e591864";
+const TWT_BASE_URL = "/api/twtapi";
 
 export const extractTweetId = (xUrl) => {
     const { pathname } = new URL(xUrl);
@@ -22,7 +21,6 @@ export const getTweetData = async (data) => {
             lang: "en",
         },
         headers: {
-            "X-API-Key": TWT_API_KEY,
             "X-Lang": "en",
         },
         timeout: 30000,
