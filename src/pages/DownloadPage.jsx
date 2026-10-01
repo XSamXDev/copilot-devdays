@@ -35,17 +35,6 @@ export default function DownloadPage() {
 
   const onSubmit = async (data) => {
     try {
-      if (count === 5 && !isSignedIn) {
-        alert(
-          "You have reached the maximum number of downloads. Please sign in to continue downloading.",
-        );
-        return;
-      }
-
-      if (count < 5 && !isSignedIn) {
-        localStorage.setItem("count", count + 1);
-      }
-
       setLoading(true);
 
       const response = await getTweetData(data);
